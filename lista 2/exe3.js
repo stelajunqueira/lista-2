@@ -53,12 +53,33 @@ function requisito2(vet){
    }
    else console.log(`Não existe habitante para este cálculo.`)
 }
-function requisito3(vet){
-    
+function requisito3(vet){ //vet aponta para vetor
+    var maior = vet[0].idade
+    for(var i=0; i<vet.length; i++){
+        if (vet[i].idade > maior){
+            maior = vet[i].idade
+        }
+    }
+    console.log(`Maior idade ${maior}`)
 }
 function requisito4(vet){
-    
+    var quantidade = 0
+    for (var i=0; i<vet.length; i++){
+        if (((vet[i].sexo == 'F') && (vet[i].idade >= 20) && (vet[i].idade <= 40))
+            ||
+        (vet[i].olhos == 'V') && (vet[i].altura < 1.70)){
+            quantidade ++
+        }
+    }
+    console.log(quantidade)  
 }
 function requisito5(vet){
+    var quantidade = 0
+    for (var i=0; i<vet.length; i++){
+        if (vet[i].sexo == 'M'){
+            quantidade++
+        }
+    }
+    console.log(quantidade/vet.length*100)
     
 }
