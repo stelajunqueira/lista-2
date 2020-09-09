@@ -6,7 +6,7 @@ function chefe(){
     do{        
         let opcao = Number(prompt(`1-cadastra vendedor 2-cadastra venda 
         3-consulta vendas funcionario mês 4-consulta vendas funcionário 
-        5-consulra funcionário com maior venda 6-sair`))
+        5-consulra funcionário com maior venda 6-consulta mês com mais vendas 7-sair`))
         switch(opcao){
             case 1: cadastraVendedor(vendedores) //escopo global, passando a referencia de vendedores
                     break
@@ -19,7 +19,9 @@ function chefe(){
                     break
             case 5: consultaVendedorMaiorVenda(vendas)
                     break
-            case 6: console.log(`Pograma encerrado`)
+            case 6: consultaMesMaisVendas(vendas)
+                    break
+            case 7: console.log(`Pograma encerrado`)
                     break
         }
     }
@@ -115,5 +117,27 @@ function consultaVendedorMaiorVenda(ven){
         }
     }
     console.log(`A maior venda é de ${maiorvenda} feita pelo vendedor ${codigovendedor} no mês ${mes}`)
+}
+
+function consultaMesMaisVendas(ven){
+    //vamos criar um vetor que vai conter o total de vendas
+    let meses = [0,0,0,0,0,0,0,0,0,0,0,0]
+    // percorre o vetor de vendas
+    for (let i=0; i<ven.length; i++){
+        let posicao = ven[i].mes - 1
+        meses[posicao] = meses[posicao] + ven[i].valor
+    }
+    // decobrir o maior valor no vetor:
+    let maiorvalor = meses[0]
+    for (let i=1; i<ven.length; i++){
+        if (ven[i].valor > maiorvalor){
+            maiorvalor = ven[i].valor
+        }
+    }
+    //encontrar o mês com o maior valor:
+    let posicao = ven.indexOf(maiorvalor) //posicao no vetor contendo o maior valor
+    console.log(`Mês com mais vendas ${posicao + 1} e o valor é ${maiorvalor}`)
+
+
 }
 
